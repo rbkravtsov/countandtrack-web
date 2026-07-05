@@ -1,69 +1,388 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    body {background-color: #f5f5f6}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #141417; -webkit-text-stroke: #141417; min-height: 15.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px 'Helvetica Neue'; color: #5b5a67; -webkit-text-stroke: #5b5a67}
-    p.p4 {margin: 0.0px 0.0px 14.0px 0.0px; font: 8.6px '.SF NS'; color: #5b5a67; -webkit-text-stroke: #5b5a67}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.4px '.SF NS'; color: #141417; -webkit-text-stroke: #141417}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.4px '.SF NS'; color: #5b5a67; -webkit-text-stroke: #5b5a67; min-height: 13.0px}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #5b5a67; -webkit-text-stroke: #5b5a67}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #3a40d5; -webkit-text-stroke: #3a40d5; min-height: 15.0px}
-    p.p10 {margin: 0.0px 0.0px 16.0px 0.0px; font: 10.6px 'Helvetica Neue'; color: #5b5a67; -webkit-text-stroke: #5b5a67}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px '.SF NS'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px '.SF NS'; color: #141417; -webkit-text-stroke: #141417}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px '.SF NS'; color: #141417; -webkit-text-stroke: #141417; min-height: 12.0px}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 9.8px 'Helvetica Neue'; color: #5b5a67; -webkit-text-stroke: #5b5a67}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; background-color: #ffffff}
-    span.s3 {font-kerning: none; background-color: #3a40d5}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Count & Track</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --text: #1a1a1e;
+      --muted: #6e6e7a;
+      --border: #e4e4ea;
+      --accent: #4b5bdd;
+      --accent-light: #eef0fc;
+      --radius: 14px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(75, 91, 221, 0.22);
+    }
+
+    .app-icon svg { width: 36px; height: 36px; }
+
+    .app-meta h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .app-meta p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    section { margin-bottom: 48px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 20px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: background 0.15s;
+    }
+
+    .faq-question:hover { background: var(--bg); }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      color: var(--muted);
+      transition: transform 0.22s ease;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.28s ease, padding 0.2s ease;
+      padding: 0 20px;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding: 0 20px 18px;
+    }
+
+    .faq-answer p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* Contact */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      background: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    .contact-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-body p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .contact-body a.email {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* App info */
+    .info-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child { border-bottom: none; }
+    .info-row span:first-child { color: var(--muted); }
+    .info-row span:last-child { font-weight: 500; }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 64px;
+    }
+
+    @media (max-width: 480px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .contact-card { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 16.8px 'Helvetica Neue'; color: #141417; -webkit-text-stroke: #141417"><span class="s1"><b>Count &amp; Track</b></span></h1>
-<p class="p3"><span class="s1">Personal Event Counter &amp; Statistics</span></p>
-<p class="p4"><span class="s1"><b>FREQUENTLY ASKED QUESTIONS</b></span></p>
-<p class="p5"><span class="s2">How do I create a counter?</span></p>
-<p class="p6"><span class="s1"></span><br></p>
-<p class="p7"><span class="s2">Tap the <b>+</b> button on the main screen. Give your counter a name, choose a mode, and add one or more parameters with colors. Each parameter is a type of event you'll be logging.</span></p>
-<p class="p5"><span class="s2">How do I log an event?</span></p>
-<p class="p6"><span class="s1"></span><br></p>
-<p class="p7"><span class="s2">On the counter screen, tap the colored parameter button that matches the event. That's it — the event is logged instantly with a timestamp.</span></p>
-<p class="p5"><span class="s2">How do I undo the last event?</span></p>
-<p class="p6"><span class="s1"></span><br></p>
-<p class="p7"><span class="s2">Shake your phone right after logging. A confirmation will appear to undo the last recorded event. This works for the most recent entry only.</span></p>
-<p class="p5"><span class="s2">What does "Stop Tracking" do?</span></p>
-<p class="p6"><span class="s1"></span><br></p>
-<p class="p7"><span class="s2">It archives the counter — removing it from the main swipe view while keeping all your logged data intact. You can access archived counters any time from the full counter list.</span></p>
-<p class="p5"><span class="s2">How do I restore my purchase on a new device?</span></p>
-<p class="p6"><span class="s1"></span><br></p>
-<p class="p7"><span class="s2">Open the app, go to the paywall or settings, and tap <b>Restore Purchase</b>. Make sure you're signed in with the same Apple ID used for the original purchase.</span></p>
-<p class="p5"><span class="s2">Is there a subscription?</span></p>
-<p class="p6"><span class="s1"></span><br></p>
-<p class="p7"><span class="s2">No. Count &amp; Track uses a one-time lifetime purchase. Pay once and you own it forever — no recurring charges, no paywalled features later.</span></p>
-<p class="p5"><span class="s2">How long is the free trial?</span></p>
-<p class="p6"><span class="s1"></span><br></p>
-<p class="p7"><span class="s2">7 days, with full access to all features. The app shows you how many trial days remain so there are no surprises.</span></p>
-<p class="p4"><span class="s1"><b>CONTACT</b></span></p>
-<p class="p8"><span class="s1"></span><br></p>
-<h3 style="margin: 0.0px 0.0px 4.0px 0.0px; font: 12.0px '.SF NS'; color: #141417; -webkit-text-stroke: #141417"><span class="s2"><b>Get in touch</b><b></b></span></h3>
-<p class="p10"><span class="s2">Found a bug or have a suggestion? I read every message and usually reply within 1–2 business days.</span></p>
-<p class="p11"><span class="s3"><a href="mailto:support@blooming-island.com"><b>support@blooming-island.com</b><span class="s1"><b></b></span></a></span></p>
-<p class="p4"><span class="s1"><b>APP INFO</b></span></p>
-<p class="p3"><span class="s2">App</span></p>
-<p class="p12"><span class="s2">Count &amp; Track</span></p>
-<p class="p3"><span class="s2">Platform</span></p>
-<p class="p12"><span class="s2">iOS</span></p>
-<p class="p3"><span class="s2">Developer</span></p>
-<p class="p12"><span class="s2">Roman Kravtsov</span></p>
-<p class="p13"><span class="s1"></span><br></p>
-<p class="p14"><span class="s1">© 2026 Roman Kravtsov</span></p>
+<div class="page">
+
+  <header>
+    <div class="app-icon">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="8" width="4" height="20" rx="2" fill="white"/>
+        <rect x="12" y="8" width="4" height="20" rx="2" fill="white"/>
+        <rect x="19" y="8" width="4" height="20" rx="2" fill="white"/>
+        <rect x="5" y="16" width="26" height="4" rx="2" fill="white" opacity="0.35" transform="rotate(20 18 18)"/>
+      </svg>
+    </div>
+    <div class="app-meta">
+      <h1>Count &amp; Track</h1>
+      <p>Personal Event Counter &amp; Statistics</p>
+    </div>
+  </header>
+
+  <section>
+    <p class="section-label">Frequently Asked Questions</p>
+    <div class="card" id="faq">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I create a counter?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Tap the <strong>+</strong> button on the main screen. Give your counter a name, choose a mode, and add one or more parameters with colors. Each parameter is a type of event you'll be logging.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I log an event?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>On the counter screen, tap the colored parameter button that matches the event. That's it — the event is logged instantly with a timestamp.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I undo the last event?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Shake your phone right after logging. A confirmation will appear to undo the last recorded event. This works for the most recent entry only.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What does "Stop Tracking" do?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>It archives the counter — removing it from the main swipe view while keeping all your logged data intact. You can access archived counters any time from the full counter list.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I restore my purchase on a new device?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Open the app, go to the paywall or settings, and tap <strong>Restore Purchase</strong>. Make sure you're signed in with the same Apple ID used for the original purchase.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is there a subscription?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>No. Count &amp; Track uses a one-time lifetime purchase. Pay once and you own it forever — no recurring charges, no paywalled features later.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How long is the free trial?
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>7 days, with full access to all features. The app shows you how many trial days remain so there are no surprises.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Contact</p>
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="M2 7l10 7 10-7"/>
+        </svg>
+      </div>
+      <div class="contact-body">
+        <h3>Get in touch</h3>
+        <p>Found a bug or have a suggestion? I read every message and usually reply within 1–2 business days.</p>
+        <a class="email" href="mailto:support@blooming-island.com">support@blooming-island.com</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">App Info</p>
+    <div class="info-strip">
+      <div class="info-row">
+        <span>App</span>
+        <span>Count &amp; Track</span>
+      </div>
+      <div class="info-row">
+        <span>Platform</span>
+        <span>iOS</span>
+      </div>
+      <div class="info-row">
+        <span>Developer</span>
+        <span>Roman Kravtsov</span>
+      </div>
+      <div class="info-row">
+        <span>Privacy Policy</span>
+        <span><a href="privacy.html">View policy</a></span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Roman Kravtsov</p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
 </body>
 </html>

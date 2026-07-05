@@ -1,71 +1,319 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    body {background-color: #f2f2f4}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #101012; -webkit-text-stroke: #101012; min-height: 14.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px 'Helvetica Neue'; color: #494754; -webkit-text-stroke: #494754}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.2px 'Helvetica Neue'; color: #21208e; -webkit-text-stroke: #21208e; background-color: #e5e7fa}
-    p.p5 {margin: 0.0px 0.0px 14.0px 0.0px; font: 8.6px Times; color: #494754; -webkit-text-stroke: #494754}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.2px 'Apple Color Emoji'; color: #101012; -webkit-text-stroke: #101012}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.8px Times; color: #101012; -webkit-text-stroke: #101012}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.6px 'Helvetica Neue'; color: #494754; -webkit-text-stroke: #494754}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.6px Times; color: #101012; -webkit-text-stroke: #101012}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 9.8px 'Helvetica Neue'; color: #494754; -webkit-text-stroke: #494754}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; background-color: #ffffff}
-    span.s3 {font: 10.8px 'Lucida Grande'; font-kerning: none; background-color: #ffffff}
-    span.s4 {font: 10.8px 'Helvetica Neue'; text-decoration: underline ; font-kerning: none; color: #2b25cb; -webkit-text-stroke: 0px #2b25cb}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Count & Track</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --text: #1a1a1e;
+      --muted: #6e6e7a;
+      --border: #e4e4ea;
+      --accent: #4b5bdd;
+      --accent-light: #eef0fc;
+      --radius: 14px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(75, 91, 221, 0.22);
+    }
+
+    .app-icon svg { width: 36px; height: 36px; }
+
+    .app-meta h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .app-meta p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .intro-card {
+      background: var(--accent-light);
+      border: 1px solid #d4d9f7;
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-bottom: 40px;
+      font-size: 0.93rem;
+      color: #3a4ab0;
+      line-height: 1.6;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    section { margin-bottom: 40px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .policy-block {
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .policy-block:last-child { border-bottom: none; }
+
+    .policy-block h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .policy-block p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .policy-block p + p { margin-top: 8px; }
+
+    .summary-strip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .summary-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 15px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .summary-row:last-child { border-bottom: none; }
+
+    .summary-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .summary-row strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .summary-row p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .meta-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 20px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .meta-row:last-child { border-bottom: none; }
+    .meta-row span:first-child { color: var(--muted); }
+    .meta-row span:last-child { font-weight: 500; }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 64px;
+    }
+
+    @media (max-width: 480px) {
+      header { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1"></span><br></p>
-<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 16.8px 'Helvetica Neue'; color: #101012; -webkit-text-stroke: #101012"><span class="s1"><b>Privacy Policy</b><b></b></span></h1>
-<p class="p3"><span class="s1">Count &amp; Track</span></p>
-<p class="p4"><span class="s1"><b>The short version:</b> Count &amp; Track does not collect, transmit, or share any personal data. Everything you log stays on your device.</span></p>
-<p class="p5"><span class="s1"><b>AT A GLANCE</b><b></b></span></p>
-<p class="p6"><span class="s2">🔒</span></p>
-<p class="p7"><span class="s2"><b>No data collection</b><b></b></span></p>
-<p class="p8"><span class="s2">The app does not collect any personal information, usage data, or analytics.</span></p>
-<p class="p6"><span class="s2">📱</span></p>
-<p class="p7"><span class="s2"><b>All data stays on your device</b><b></b></span></p>
-<p class="p8"><span class="s2">Your counters and event logs are stored locally and never leave your device.</span></p>
-<p class="p6"><span class="s2">🚫</span></p>
-<p class="p7"><span class="s2"><b>No third-party trackers</b><b></b></span></p>
-<p class="p8"><span class="s2">No advertising SDKs, analytics frameworks, or tracking libraries are included.</span></p>
-<p class="p6"><span class="s2">💳</span></p>
-<p class="p7"><span class="s2"><b>Purchases handled by Apple</b><b></b></span></p>
-<p class="p8"><span class="s2">All payments go through Apple's App Store. We never see your payment details.</span></p>
-<p class="p5"><span class="s1"><b>FULL POLICY</b><b></b></span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>1. Information We Collect</b><b></b></span></h3>
-<p class="p3"><span class="s2">Count &amp; Track does not collect any personal information. The app does not require account registration, and no data is transmitted to external servers.</span></p>
-<p class="p3"><span class="s2">All data you enter — counter names, parameters, and event logs — is stored exclusively on your device using local storage.</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>2. Local Storage</b><b></b></span></h3>
-<p class="p3"><span class="s2">Your data is saved on-device and is subject to standard iOS backup behavior. If you have iCloud Backup enabled, your app data may be included in your personal iCloud backup — which is controlled entirely by you through iOS Settings.</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>3. In-App Purchases</b><b></b></span></h3>
-<p class="p3"><span class="s2">The lifetime unlock is processed through Apple's App Store infrastructure. We do not receive or store any payment information, billing details, or purchase history beyond what Apple provides through their StoreKit API (a transaction receipt used solely to verify your purchase status on-device).</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>4. Analytics &amp; Crash Reporting</b><b></b></span></h3>
-<p class="p3"><span class="s2">Count &amp; Track does not use any third-party analytics or crash reporting services. If you have opted in to share diagnostics with app developers via iOS Settings </span><span class="s3">→</span><span class="s2"> Privacy </span><span class="s3">→</span><span class="s2"> Analytics &amp; Improvements, Apple may share anonymized crash logs with us through App Store Connect. This is governed by Apple's privacy policy, not ours.</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>5. Third Parties</b><b></b></span></h3>
-<p class="p3"><span class="s2">We do not share data with any third parties. No advertising networks, data brokers, or external services receive any information related to your use of this app.</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>6. Children's Privacy</b><b></b></span></h3>
-<p class="p3"><span class="s2">Count &amp; Track does not knowingly collect any information from children under the age of 13. Since no data is collected from any user, the app is suitable for all ages.</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>7. Changes to This Policy</b><b></b></span></h3>
-<p class="p3"><span class="s2">If this privacy policy changes materially, we will update the "Last updated" date below and, where appropriate, note the change in the App Store release notes.</span></p>
-<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 11.4px Times; color: #101012; -webkit-text-stroke: #101012"><span class="s2"><b>8. Contact</b><b></b></span></h3>
-<p class="p3"><span class="s2">Questions about this policy? Reach us at <a href="mailto:support@yourdomain.com"><span class="s4">support@blooming-island.com</span></a></span></p>
-<p class="p5"><span class="s1"><b>DOCUMENT INFO</b><b></b></span></p>
-<p class="p8"><span class="s2">Effective date</span></p>
-<p class="p10"><span class="s2">January 1, 2026</span></p>
-<p class="p8"><span class="s2">Last updated</span></p>
-<p class="p10"><span class="s2">January 1, 2026</span></p>
-<p class="p8"><span class="s2">Developer</span></p>
-<p class="p10"><span class="s2">Roman Kravtsov</span></p>
-<p class="p11"><span class="s1">© 2026 Roman Kravtsov</span></p>
+<div class="page">
+
+  <header>
+    <div class="app-icon">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="5" y="8" width="4" height="20" rx="2" fill="white"/>
+        <rect x="12" y="8" width="4" height="20" rx="2" fill="white"/>
+        <rect x="19" y="8" width="4" height="20" rx="2" fill="white"/>
+        <rect x="5" y="16" width="26" height="4" rx="2" fill="white" opacity="0.35" transform="rotate(20 18 18)"/>
+      </svg>
+    </div>
+    <div class="app-meta">
+      <h1>Privacy Policy</h1>
+      <p>Count &amp; Track</p>
+    </div>
+  </header>
+
+  <div class="intro-card">
+    <strong>The short version:</strong> Count &amp; Track does not collect, transmit, or share any personal data. Everything you log stays on your device.
+  </div>
+
+  <section>
+    <p class="section-label">At a Glance</p>
+    <div class="summary-strip">
+      <div class="summary-row">
+        <span class="summary-icon">🔒</span>
+        <div>
+          <strong>No data collection</strong>
+          <p>The app does not collect any personal information, usage data, or analytics.</p>
+        </div>
+      </div>
+      <div class="summary-row">
+        <span class="summary-icon">📱</span>
+        <div>
+          <strong>All data stays on your device</strong>
+          <p>Your counters and event logs are stored locally and never leave your device.</p>
+        </div>
+      </div>
+      <div class="summary-row">
+        <span class="summary-icon">🚫</span>
+        <div>
+          <strong>No third-party trackers</strong>
+          <p>No advertising SDKs, analytics frameworks, or tracking libraries are included.</p>
+        </div>
+      </div>
+      <div class="summary-row">
+        <span class="summary-icon">💳</span>
+        <div>
+          <strong>Purchases handled by Apple</strong>
+          <p>All payments go through Apple's App Store. We never see your payment details.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Full Policy</p>
+    <div class="card">
+
+      <div class="policy-block">
+        <h3>1. Information We Collect</h3>
+        <p>Count &amp; Track does not collect any personal information. The app does not require account registration, and no data is transmitted to external servers.</p>
+        <p>All data you enter — counter names, parameters, and event logs — is stored exclusively on your device using local storage.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>2. Local Storage</h3>
+        <p>Your data is saved on-device and is subject to standard iOS backup behavior. If you have iCloud Backup enabled, your app data may be included in your personal iCloud backup — which is controlled entirely by you through iOS Settings.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>3. In-App Purchases</h3>
+        <p>The lifetime unlock is processed through Apple's App Store infrastructure. We do not receive or store any payment information, billing details, or purchase history beyond what Apple provides through their StoreKit API (a transaction receipt used solely to verify your purchase status on-device).</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>4. Analytics &amp; Crash Reporting</h3>
+        <p>Count &amp; Track does not use any third-party analytics or crash reporting services. If you have opted in to share diagnostics with app developers via iOS Settings → Privacy → Analytics &amp; Improvements, Apple may share anonymized crash logs with us through App Store Connect. This is governed by Apple's privacy policy, not ours.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>5. Third Parties</h3>
+        <p>We do not share data with any third parties. No advertising networks, data brokers, or external services receive any information related to your use of this app.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>6. Children's Privacy</h3>
+        <p>Count &amp; Track does not knowingly collect any information from children under the age of 13. Since no data is collected from any user, the app is suitable for all ages.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>7. Changes to This Policy</h3>
+        <p>If this privacy policy changes materially, we will update the "Last updated" date below and, where appropriate, note the change in the App Store release notes.</p>
+      </div>
+
+      <div class="policy-block">
+        <h3>8. Contact</h3>
+        <p>Questions about this policy? Reach us at <a href="mailto:support@blooming-island.com">support@blooming-island.com</a>.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Document Info</p>
+    <div class="meta-wrap">
+      <div class="meta-row">
+        <span>Effective date</span>
+        <span>January 1, 2026</span>
+      </div>
+      <div class="meta-row">
+        <span>Last updated</span>
+        <span>January 1, 2026</span>
+      </div>
+      <div class="meta-row">
+        <span>Developer</span>
+        <span>Roman Kravtsov</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Roman Kravtsov</p>
+  </footer>
+
+</div>
 </body>
 </html>
